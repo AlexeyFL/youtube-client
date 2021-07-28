@@ -1,0 +1,26 @@
+.sort {
+  background: #e5e5e5;
+  padding: 18px 0;
+  &__body {
+    max-width: 575px;
+    margin: auto;
+  }
+  &__title {
+    color: #929292;
+    font-size: 12px;
+    margin-right: 11px;
+  }
+  &__btn {
+    font-size: 12px;
+    background: initial;
+    color: #2f80ed;
+    &.active {
+      text-decoration: underline;
+    }
+  }
+  &__input {
+    width: 150px;
+    height: 13px;
+    border: none;
+  }
+}

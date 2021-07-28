@@ -1,0 +1,17 @@
+.user-login {
+  position: absolute;
+  right: 0;
+  min-width: 95px;
+  top: 5px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  &__name {
+    margin-right: 10px;
+    font-size: 12px;
+    color: #4f4f4f;
+  }
+  @media (max-width: 1200px) {
+    right: 15px;
+  }
+}
