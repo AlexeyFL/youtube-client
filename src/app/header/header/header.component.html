@@ -6,7 +6,10 @@
           <img src="../../../assets/images/logo.png" alt="Yuotube"
         /></a>
       </div>
-      <app-search></app-search>
+      <app-search
+        (searchItems)="getSearchItems($event)"
+        (changeToggleSettings)="onToggleSettings($event)"
+      ></app-search>
     </div>
     <app-user-login class="login"></app-user-login>
   </div>

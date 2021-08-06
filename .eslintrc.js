@@ -8,11 +8,7 @@ module.exports = {
         createDefaultProgram: true,
       },
       extends: ['plugin:@angular-eslint/recommended', 'airbnb-typescript/base'],
-      rules: {
-        'linebreak-style': 0,
-        'import/prefer-default-export': 'off',
-        'no-console': 'off',
-      },
+      rules: {},
     },
     {
       files: ['*.component.html'],
@@ -20,7 +16,7 @@ module.exports = {
       rules: {},
     },
     {
-      files: ['*.component.ts'],
+      files: ['*.**.ts'],
       extends: [
         'plugin:@angular-eslint/template/process-inline-templates',
         'airbnb-typescript/base',
@@ -28,6 +24,10 @@ module.exports = {
       rules: {
         'linebreak-style': 0,
         'import/prefer-default-export': 'off',
+        'object-curly-newline': 'off',
+        'no-constant-condition': 'off',
+        'no-alert': 'off',
+        'class-methods-use-this': 'off',
       },
     },
   ],

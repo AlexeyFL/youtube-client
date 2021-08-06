@@ -1,7 +1,16 @@
 <div class="wrapper">
-  <app-header></app-header>
-  <app-sort></app-sort>
+  <app-header
+    (passSearchItems)="getSearchItems($event)"
+    (changeToggleSettings)="onToggleSettings($event)"
+    [categories]="items"
+  ></app-header>
+  <app-sort
+    (searchString)="getSearchString($event)"
+    *ngIf="toggleSettins"
+    [categories]="searchItems"
+  ></app-sort>
   <div class="container">
-    <app-search-results></app-search-results>
+    <!-- <app-search-results></app-search-results> -->
+    <app-user-categories [searchString]="searchString" [categories]="searchItems"></app-user-categories>
   </div>
 </div>
