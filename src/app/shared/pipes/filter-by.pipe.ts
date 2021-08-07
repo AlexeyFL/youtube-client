@@ -11,7 +11,11 @@ export class FilterByPipe implements PipeTransform {
 
     return array.map((item: any) => {
       if (searchString) {
-        if (item.snippet.title.toLowerCase().indexOf(searchString.toLowerCase()) >= 0) {
+        if (
+          item.snippet.title
+            .toLowerCase()
+            .indexOf(searchString.toLowerCase()) >= 0
+        ) {
           return item;
         }
       }

@@ -1,4 +1,4 @@
-<div class="card" *ngIf="category">
+<div class="card" *ngIf="category" [ngClass]="currentClasses">
   <div class="card__poster">
     <img src="{{ category.snippet.thumbnails.high.url }}" alt="poster" />
   </div>

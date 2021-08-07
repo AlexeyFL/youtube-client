@@ -49,7 +49,7 @@ export const items: SearchItem[] = [
     snippet: {
       title:
         'Angular Tutorial for Beginners: Learn Angular from Scratch | Mosh',
-      publishedAt: '2017-09-05T16:48:15.000Z',
+      publishedAt: '2021-08-05T16:48:15.000Z',
       thumbnails: {
         default: {
           url: 'https://i.ytimg.com/vi/k5E2AVpwsko/default.jpg',
@@ -90,7 +90,7 @@ export const items: SearchItem[] = [
     id: uuidv4(),
     snippet: {
       title: 'Angular 8 - Быстрый курс за 60 минут',
-      publishedAt: '2019-05-30T12:42:19.000Z',
+      publishedAt: '2021-08-08T12:42:19.000Z',
       thumbnails: {
         default: {
           url: 'https://i.ytimg.com/vi/YN8zNnV0sK8/default.jpg',
@@ -213,7 +213,7 @@ export const items: SearchItem[] = [
     id: uuidv4(),
     snippet: {
       title: 'Angular 8 Основы',
-      publishedAt: '2019-09-04T15:00:12.000Z',
+      publishedAt: '2021-07-25T15:00:12.000Z',
       thumbnails: {
         default: {
           url: 'https://i.ytimg.com/vi/Rf54BH35yrY/default.jpg',

@@ -6,7 +6,12 @@ import { ShortenPipe } from '../shared/pipes/shorten.pipe';
 import { FilterByPipe } from '../shared/pipes/filter-by.pipe';
 
 @NgModule({
-  declarations: [UserCategoriesComponent, UserCardComponent, ShortenPipe, FilterByPipe],
+  declarations: [
+    UserCategoriesComponent,
+    UserCardComponent,
+    ShortenPipe,
+    FilterByPipe,
+  ],
   imports: [CommonModule],
   exports: [UserCategoriesComponent],
 })

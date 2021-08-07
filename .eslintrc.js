@@ -28,6 +28,7 @@ module.exports = {
         'no-constant-condition': 'off',
         'no-alert': 'off',
         'class-methods-use-this': 'off',
+        'implicit-arrow-linebreak': 'off',
       },
     },
   ],

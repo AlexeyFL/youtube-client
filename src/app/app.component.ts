@@ -28,6 +28,9 @@ export class AppComponent {
 
   getSearchString(searchStr: string | null) {
     this.searchString = searchStr;
-    console.log(this.searchString);
+  }
+
+  getSortItems(searchItems: SearchItem[]) {
+    this.searchItems = searchItems;
   }
 }

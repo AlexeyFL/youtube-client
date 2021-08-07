@@ -8,9 +8,13 @@
     (searchString)="getSearchString($event)"
     *ngIf="toggleSettins"
     [categories]="searchItems"
+    (sortItems)="(getSortItems($event))"
   ></app-sort>
   <div class="container">
     <!-- <app-search-results></app-search-results> -->
-    <app-user-categories [searchString]="searchString" [categories]="searchItems"></app-user-categories>
+    <app-user-categories
+      [searchString]="searchString"
+      [categories]="searchItems"
+    ></app-user-categories>
   </div>
 </div>
