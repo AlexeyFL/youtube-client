@@ -49,16 +49,16 @@ export class SortComponent {
       case 'asc':
         sortArray = this.categories.sort(
           (a, b) =>
-            Date.parse(a.snippet.publishedAt) -
-            Date.parse(b.snippet.publishedAt)
+            Date.parse(a.snippet.publishedAt)
+            - Date.parse(b.snippet.publishedAt),
         );
         this.sortItems.emit(sortArray);
         break;
       case 'desc':
         sortArray = this.categories.sort(
           (a, b) =>
-            Date.parse(b.snippet.publishedAt) -
-            Date.parse(a.snippet.publishedAt)
+            Date.parse(b.snippet.publishedAt)
+             - Date.parse(a.snippet.publishedAt),
         );
         this.sortItems.emit(sortArray);
         break;
@@ -80,14 +80,14 @@ export class SortComponent {
       case 'asc':
         sortArray = this.categories.sort(
           (a, b) =>
-            Number(a.statistics.viewCount) - Number(b.statistics.viewCount)
+            Number(a.statistics.viewCount) - Number(b.statistics.viewCount),
         );
         this.sortItems.emit(sortArray);
         break;
       case 'desc':
         sortArray = this.categories.sort(
           (a, b) =>
-            Number(b.statistics.viewCount) - Number(a.statistics.viewCount)
+            Number(b.statistics.viewCount) - Number(a.statistics.viewCount),
         );
         this.sortItems.emit(sortArray);
         break;
