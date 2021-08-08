@@ -22,16 +22,9 @@ module.exports = {
         'airbnb-typescript/base',
       ],
       rules: {
-        'linebreak-style': 0,
         'import/prefer-default-export': 'off',
-        'object-curly-newline': 'off',
-        'no-constant-condition': 'off',
-        'no-alert': 'off',
-        'class-methods-use-this': 'off',
         'implicit-arrow-linebreak': 'off',
-        'linebreak-style': 'off',
-        'no-console': 'off',
-        '@typescript-eslint/comma-dangle': 'off',
+        'object-curly-newline': 'off'
       },
     },
   ],
