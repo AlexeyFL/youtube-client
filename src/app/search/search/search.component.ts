@@ -34,7 +34,6 @@ export class SearchComponent {
 
   onSearchSubmit() {
     if (this.inputValue === '') {
-      console.log('Add text!');
       return;
     }
     const items: SearchItem[] = this.searchService.filterItem(this.inputValue);
