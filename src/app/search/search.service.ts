@@ -5,8 +5,6 @@ import { items } from '../app.constants';
 export class SearchService {
   items = items.slice();
 
-  constructor() {}
-
   getItem() {
     return this.items;
   }
@@ -14,7 +12,8 @@ export class SearchService {
   filterItem(target: string) {
     console.log(target);
     return this.items.filter(
-      (item) => item.snippet.title.toLowerCase().indexOf(target.toLowerCase()) >= 0,
+      (item) =>
+        item.snippet.title.toLowerCase().indexOf(target.toLowerCase()) >= 0
     );
   }
 }

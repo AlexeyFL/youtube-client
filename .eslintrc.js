@@ -16,7 +16,7 @@ module.exports = {
       rules: {},
     },
     {
-      files: ['*.**.ts'],
+      files: ['*.**.ts', '*.ts'],
       extends: [
         'plugin:@angular-eslint/template/process-inline-templates',
         'airbnb-typescript/base',
@@ -29,6 +29,9 @@ module.exports = {
         'no-alert': 'off',
         'class-methods-use-this': 'off',
         'implicit-arrow-linebreak': 'off',
+        'linebreak-style': 'off',
+        'no-console': 'off',
+        '@typescript-eslint/comma-dangle': 'off',
       },
     },
   ],
