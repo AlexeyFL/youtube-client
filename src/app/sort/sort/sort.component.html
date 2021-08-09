@@ -2,10 +2,19 @@
   <div class="container sort__container">
     <div class="sort__body">
       <span class="sort__title">Sorting by:</span>
-      <button class="btn sort__btn active">date</button>
-      <button class="btn sort__btn">count of views</button>
-      <button class="btn sort__btn">by word or sentance</button>
-      <input type="text" class="sort__input" />
+      <button (click)="sortByDate(changeDateAscDesc)" class="btn sort__btn active">
+        date
+      </button>
+      <button (click)="sortByView(changeViewsAscDesc)" class="btn sort__btn">
+        count of views
+      </button>
+      <label for="sort__input" class="sort__btn">by word or sentance</label>
+      <input
+        id="sort__input"
+        (input)="passSearchString($event)"
+        type="text"
+        class="sort__input"
+      />
     </div>
   </div>
 </div>

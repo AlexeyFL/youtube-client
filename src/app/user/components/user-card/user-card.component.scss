@@ -4,8 +4,7 @@
   width: 263px;
   padding: 20px 20px 15px;
   box-sizing: border-box;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25), inset 0 -5px 0 #2F80ED;
-  margin-bottom: 30px;
+  margin: 0 5px 30px;
   flex-shrink: 0;
   &__poster {
     position: relative;
@@ -66,4 +65,16 @@
     font-size: 10px;
     color: #000;
   }
+}
+
+.red {
+  box-shadow: inset 0 -6px 0px red;
+}
+
+.green {
+  box-shadow: inset 0 -6px 0px green;
+}
+
+.blue {
+  box-shadow: inset 0 -6px 0px blue;
 }

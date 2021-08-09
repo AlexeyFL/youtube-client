@@ -8,6 +8,7 @@ describe('SortComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      // eslint-disable-next-line @typescript-eslint/comma-dangle
       declarations: [SortComponent],
     }).compileComponents();
   });

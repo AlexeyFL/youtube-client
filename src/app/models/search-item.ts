@@ -8,7 +8,7 @@ export interface SearchItem {
   id: string;
   snippet: {
     title: string;
-    publishedAt: string;
+    publishedAt: any;
     thumbnails: {
       default: ThumbnailData;
       medium: ThumbnailData;

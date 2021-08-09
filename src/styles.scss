@@ -16,3 +16,16 @@ body {
   border: none;
   cursor: pointer;
 }
+
+.border-bottom {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25), inset 0 -5px 0 #2f80ed;
+  &--1 {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25), inset 0 -5px 0 #eb5757;
+  }
+  &--2 {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25), inset 0 -5px 0 #27ae60;
+  }
+  &--3 {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25), inset 0 -5px 0 #f2c94c;
+  }
+}
