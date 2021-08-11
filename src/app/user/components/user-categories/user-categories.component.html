@@ -1,6 +1,12 @@
 <div class="cards">
   <app-user-card
-    *ngFor="let category of searchString ? (categories | filterBy: searchString) : categories"
+    *ngFor="
+      let category of searchString
+        ? (categories
+          | filterBy: searchString
+          | sortBy: sortingOrder:sortingValue)
+        : (categories | sortBy: sortingOrder:sortingValue)
+    "
     [category]="category"
   ></app-user-card>
 </div>

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { SearchItem } from '../../../models/search-item';
+import { VideoCard } from '../../../models/response-item';
 
 @Component({
   selector: 'app-user-categories',
@@ -8,9 +8,13 @@ import { SearchItem } from '../../../models/search-item';
   styleUrls: ['./user-categories.component.scss'],
 })
 export class UserCategoriesComponent {
-  @Input() categories: SearchItem[];
+  @Input() categories: VideoCard[];
 
   @Input() searchString: string | null;
+
+  @Input() sortingValue: string = '';
+
+  @Input() sortingOrder: boolean = true;
 
   constructor() {
     this.categories = [];

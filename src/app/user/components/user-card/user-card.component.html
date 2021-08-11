@@ -1,6 +1,6 @@
 <div class="card" *ngIf="category" [ngClass]="currentClasses">
   <div class="card__poster">
-    <img src="{{ category.snippet.thumbnails.high.url }}" alt="poster" />
+    <img src="{{ category.thumbnailUrl }}" alt="poster" />
   </div>
   <div class="card__icons">
     <div class="icon icon--viewed">
@@ -18,7 +18,7 @@
           />
         </svg>
       </div>
-      <div class="icon__text">{{ category.statistics.viewCount }}</div>
+      <div class="icon__text">{{ category.viewCount }}</div>
     </div>
 
     <div class="icon icon-liked">
@@ -36,7 +36,7 @@
           />
         </svg>
       </div>
-      <div class="icon__text">{{ category.statistics.likeCount }}</div>
+      <div class="icon__text">{{ category.likeCount }}</div>
     </div>
 
     <div class="icon icon--dislike">
@@ -54,7 +54,7 @@
           />
         </svg>
       </div>
-      <div class="icon__text">{{ category.statistics.dislikeCount }}</div>
+      <div class="icon__text">{{ category.dislikeCount }}</div>
     </div>
 
     <div class="icon icon--comment">
@@ -76,10 +76,10 @@
           />
         </svg>
       </div>
-      <div class="icon__text">{{ category.statistics.commentCount }}</div>
+      <div class="icon__text">{{ category.commentCount }}</div>
     </div>
   </div>
-  <h5 class="card__title">{{ category.snippet.title | shorten:20 }}</h5>
+  <h5 class="card__title">{{ category.title | shorten: 20 }}</h5>
   <div class="card__button">
     <a href="#" class="btn card__btn">more...</a>
   </div>
