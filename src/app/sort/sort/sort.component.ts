@@ -12,7 +12,7 @@ export class SortComponent {
 
   @Output() searchString = new EventEmitter<string | null>();
 
-  @Output() sortItems = new EventEmitter<SearchItem[]>();
+  @Output() sortItems = new EventEmitter();
 
   inputValue: string | null;
 
@@ -45,6 +45,7 @@ export class SortComponent {
       this.changeDateAscDesc = 'desc';
     }
     let sortArray = [];
+
     switch (order) {
       case 'asc':
         sortArray = this.categories.sort(

@@ -6,12 +6,10 @@
     [value]="inputValue"
     [(ngModel)]="inputValue"
   />
-  <span *ngIf="emptyString">
-    Add some text!
-  </span>
-  <button class="btn search__btn" (click)="onSearchSubmit()">search</button>
+  <span *ngIf="emptyString"> Add some text! </span>
+  <button class="btn search__btn" (click)="submitSearch()">search</button>
   <button
-    (click)="onToggleSettings()"
+    (click)="onSettingsButtonClick()"
     [ngClass]="{ active: toggleSettings }"
     class="btn search__settings-btn"
   >

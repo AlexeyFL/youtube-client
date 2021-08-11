@@ -10,27 +10,23 @@ import { SearchItem } from './models/search-item';
 export class AppComponent {
   items = items;
 
-  searchItems: SearchItem[] = [];
+  searchingItems: SearchItem[] = [];
 
-  searchString: string | null = null;
+  searchingString: string | null = null;
 
-  toggleSettins: boolean = false;
+  togglingSettings: boolean = false;
 
   title = 'youtube-client';
 
   onToggleSettings(toggle: boolean) {
-    this.toggleSettins = toggle;
+    this.togglingSettings = toggle;
   }
 
   getSearchItems(searchArr: SearchItem[]) {
-    this.searchItems = searchArr;
+    this.searchingItems = searchArr;
   }
 
   getSearchString(searchStr: string | null) {
-    this.searchString = searchStr;
-  }
-
-  getSortItems(searchItems: SearchItem[]) {
-    this.searchItems = searchItems;
+    this.searchingString = searchStr;
   }
 }

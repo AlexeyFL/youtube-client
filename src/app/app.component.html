@@ -6,15 +6,14 @@
   ></app-header>
   <app-sort
     (searchString)="getSearchString($event)"
-    *ngIf="toggleSettins"
-    [categories]="searchItems"
-    (sortItems)="(getSortItems($event))"
+    *ngIf="togglingSettings"
+    [categories]="searchingItems"
+    (sortItems)="searchingItems"
   ></app-sort>
   <div class="container">
-    <!-- <app-search-results></app-search-results> -->
     <app-user-categories
-      [searchString]="searchString"
-      [categories]="searchItems"
+      [searchString]="searchingString"
+      [categories]="searchingItems"
     ></app-user-categories>
   </div>
 </div>
