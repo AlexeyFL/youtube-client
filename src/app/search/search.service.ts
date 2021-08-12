@@ -11,8 +11,7 @@ export class SearchService {
 
   filterItem(target: string) {
     return this.videoCards.filter(
-      (item) =>
-        item.title.toLowerCase().indexOf(target.toLowerCase()) >= 0,
+      (item) => item.title.toLowerCase().indexOf(target.toLowerCase()) >= 0,
     );
   }
 }

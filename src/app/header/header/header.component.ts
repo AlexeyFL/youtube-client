@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { VideoCard } from '../../models/response-item';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,19 +8,17 @@ import { VideoCard } from '../../models/response-item';
 export class HeaderComponent {
   toggleSettings: boolean;
 
-  searchItems: VideoCard[] = [];
-
-  @Input() categories: VideoCard[] = [];
+  searchItems = [];
 
   @Output() changeToggleSettings = new EventEmitter<boolean>();
 
-  @Output() passSearchItems = new EventEmitter<VideoCard[]>();
+  @Output() passSearchItems = new EventEmitter();
 
   constructor() {
     this.toggleSettings = false;
   }
 
-  getSearchItems(arr: VideoCard[]) {
+  getSearchItems(arr: []) {
     this.searchItems = arr.slice();
     this.passSearchItems.emit(this.searchItems);
   }
