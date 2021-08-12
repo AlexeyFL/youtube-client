@@ -7,17 +7,18 @@
     (searchString)="onSearchString($event)"
     *ngIf="togglingSettings"
     [categories]="searchingItems"
-    (filteringItems)="searchingItems"
+    (filteringItems)="(searchingItems)"
     (sortingValue)="onSortingValue($event)"
     (sortOrder)="onSortOrder($event)"
   ></app-sort>
   <div class="container">
-    <app-user-categories
+    <!-- <app-user-categories
       [searchString]="searchingString"
       [categories]="searchingItems"
       [sortingValue]="sortingValue"
       [sortingOrder]="sortingOrder"
-    ></app-user-categories>
+    ></app-user-categories> -->
+    <router-outlet></router-outlet>
   </div>
 </div>
 <app-footer></app-footer>

@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './components/search/search.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SortComponent } from './components/sort/sort.component';
+import { YoutubeModule } from '../youtube/youtube.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,7 @@ import { SortComponent } from './components/sort/sort.component';
     FooterComponent,
     SortComponent,
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule, YoutubeModule],
   exports: [HeaderComponent, FooterComponent, SortComponent],
 })
 export class CoreModule {}

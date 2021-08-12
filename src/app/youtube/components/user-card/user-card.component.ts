@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { VideoCard } from '../../models/response-item';
 
 @Component({
@@ -17,7 +18,7 @@ export class UserCardComponent implements OnInit {
 
   @Input() category?: VideoCard;
 
-  constructor() {
+  constructor(private router: Router) {
     this.lessWeek = false;
     this.lessMonth = false;
     this.moreHalfYear = false;

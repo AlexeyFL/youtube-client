@@ -27,6 +27,7 @@ export interface ResponseItem {
 }
 
 export interface VideoCard {
+  id: string;
   title: string;
   thumbnailUrl: string;
   publishedAt: number;

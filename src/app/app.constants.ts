@@ -334,6 +334,7 @@ export const items: ResponseItem[] = [
 ];
 
 export const videoCards: VideoCard[] = items.map((item) => ({
+  id: item.id,
   title: item.snippet.title,
   thumbnailUrl: item.snippet.thumbnails.high.url,
   publishedAt: Date.parse(item.snippet.publishedAt),

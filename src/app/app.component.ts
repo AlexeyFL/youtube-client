@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { VideoCard } from './youtube/models/response-item';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +6,7 @@ import { VideoCard } from './youtube/models/response-item';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  searchingItems: VideoCard[] = [];
+  searchingItems: [] = [];
 
   sortingValue: string = '';
 
@@ -23,7 +22,7 @@ export class AppComponent {
     this.togglingSettings = toggle;
   }
 
-  onSearchItemsChange(searchArr: VideoCard[]) {
+  onSearchItemsChange(searchArr: []) {
     this.searchingItems = searchArr;
   }
 

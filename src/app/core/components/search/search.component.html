@@ -7,8 +7,9 @@
     [(ngModel)]="inputValue"
   />
   <span *ngIf="emptyString"> Add some text! </span>
-  <button class="btn search__btn" (click)="submitSearch()">search</button>
+  <button routerLink="/videos" class="btn search__btn" (click)="submitSearch()">search</button>
   <button
+
     (click)="onSettingsButtonClick()"
     [ngClass]="{ active: toggleSettings }"
     class="btn search__settings-btn"

@@ -81,6 +81,8 @@
   </div>
   <h5 class="card__title">{{ category.title | shorten: 20 }}</h5>
   <div class="card__button">
-    <a href="#" class="btn card__btn">more...</a>
+    <a href="#" [routerLink]="['/videos', category.id]" class="btn card__btn"
+      >more...</a
+    >
   </div>
 </div>
