@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { videoCards } from '../app.constants';
+import { videoCards } from '../../app.constants';
 
 @Injectable()
 export class SearchService {

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { VideoCard } from '../../models/response-item';
+import { VideoCard } from '../../../youtube/models/response-item';
 
 @Component({
   selector: 'app-header',

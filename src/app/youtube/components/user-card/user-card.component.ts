@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { VideoCard } from '../../../models/response-item';
+import { VideoCard } from '../../models/response-item';
 
 @Component({
   selector: 'app-user-card',
