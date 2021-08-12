@@ -32,12 +32,7 @@ export class SearchComponent {
   }
 
   submitSearch() {
-    if (this.inputValue === '') {
-      return;
-    }
     const items = this.searchService.filterItem(this.inputValue);
     this.searchItems.emit(items);
-
-    this.inputValue = '';
   }
 }
