@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,19 +9,15 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent {
   togglingSettings: boolean;
 
+  isAuthenticated: boolean;
+
   searchItems = [];
 
   @Output() changeToggleSettings = new EventEmitter<boolean>();
 
-  @Output() passSearchItems = new EventEmitter();
-
-  constructor() {
+  constructor(public authService: AuthService) {
     this.togglingSettings = false;
-  }
-
-  getSearchItems(arr: []) {
-    this.searchItems = arr.slice();
-    this.passSearchItems.emit(this.searchItems);
+    this.isAuthenticated = false;
   }
 
   onToggleSettings(item: boolean) {

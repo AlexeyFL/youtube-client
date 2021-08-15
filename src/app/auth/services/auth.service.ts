@@ -9,11 +9,9 @@ export type User = {
   providedIn: 'root',
 })
 export class AuthService {
-  user = {};
-
   loggedIn = false;
 
-  isAuthenticated() {
+  /* isAuthenticated() {
     const promise = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(this.loggedIn);
@@ -21,7 +19,7 @@ export class AuthService {
     });
 
     return promise;
-  }
+  } */
 
   logout() {
     localStorage.removeItem('formToken');
@@ -36,9 +34,7 @@ export class AuthService {
   }
 
   login() {
-    if (!localStorage.getItem('formToken')) {
-      localStorage.setItem('formToken', this.generateToken());
-      this.loggedIn = true;
-    }
+    localStorage.setItem('formToken', this.generateToken());
+    this.loggedIn = true;
   }
 }

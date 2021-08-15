@@ -26,14 +26,18 @@ export class AuthPageComponent {
     /* const { email } = form.value;
     const { password } = form.value; */
 
-    this.isLoading = true;
+    // this.isLoading = true;
 
     this.authService.login();
 
-    setTimeout(() => {
+    /* setTimeout(() => {
       this.isLoading = false;
-    }, 500);
+    }, 500); */
 
     form.reset();
+  }
+
+  login() {
+    this.authService.login();
   }
 }

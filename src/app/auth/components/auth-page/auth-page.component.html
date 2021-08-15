@@ -1,8 +1,8 @@
 <div class="auth">
   <div class="container">
-    <div *ngIf="isLoading">
+    <!-- <div *ngIf="isLoading">
       <app-spinner></app-spinner>
-    </div>
+    </div> -->
     <form
       #authForm="ngForm"
       (ngSubmit)="onSubmit(authForm)"
@@ -34,10 +34,21 @@
         />
       </div>
       <div class="form__row">
-        <button class="btn form__btn" [disabled]="!authForm.valid">
+        <!-- <button
+          [routerLink]="['/videos']"
+          class="btn form__btn"
+          [disabled]="!authForm.valid"
+        >
           Login
-        </button>
+        </button> -->
       </div>
+      <button
+        (click)="login()"
+        [routerLink]="['/videos']"
+        class="btn form__btn"
+      >
+        Login
+      </button>
     </form>
   </div>
 </div>
