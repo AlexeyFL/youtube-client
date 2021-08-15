@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthPageComponent } from './auth/components/auth-page/auth-page.component';
+import { NotFoundPageComponent } from './core/components/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
@@ -14,8 +14,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'videos',
+    redirectTo: 'auth',
     pathMatch: 'full',
+  },
+  {
+    path: '**',
+    component: NotFoundPageComponent,
   },
 ];
 

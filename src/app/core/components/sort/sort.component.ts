@@ -1,6 +1,7 @@
 /* eslint-disable operator-linebreak */
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { VideoCard } from '../../../youtube/models/response-item';
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   selector: 'app-sort',
@@ -22,19 +23,25 @@ export class SortComponent {
 
   isAsc: boolean;
 
-  constructor() {
+  constructor(private filterService: FilterService) {
     this.categories = [];
     this.inputValue = null;
     this.isAsc = true;
   }
 
   passSearchString(e: Event) {
-    this.searchString.emit((e.target as HTMLInputElement).value);
+    this.filterService.setFilteringString((e.target as HTMLInputElement).value);
   }
 
   sortBy(sortingValue: string) {
     this.isAsc = !this.isAsc;
     this.sortingValue.emit(sortingValue);
     this.sortOrder.emit(this.isAsc);
+    const options = {
+      isAsc: this.isAsc,
+      sortingValue,
+    };
+    console.log('this.isAsc', options);
+    this.filterService.setSortingOptions(options);
   }
 }

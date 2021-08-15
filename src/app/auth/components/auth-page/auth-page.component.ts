@@ -35,7 +35,7 @@ export class AuthPageComponent {
     this.authService.signup(email, password);
     setTimeout(() => {
       this.isLoading = false;
-      this.router.navigate(['/youtube']);
+      this.router.navigate(['/videos']);
     }, 500);
 
     form.reset();

@@ -9,6 +9,7 @@ import { UserLoginComponent } from './components/user-login/user-login.component
 import { FooterComponent } from './components/footer/footer.component';
 import { SortComponent } from './components/sort/sort.component';
 import { YoutubeModule } from '../youtube/youtube.module';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { YoutubeModule } from '../youtube/youtube.module';
     UserLoginComponent,
     FooterComponent,
     SortComponent,
+    NotFoundPageComponent,
   ],
   imports: [CommonModule, FormsModule, RouterModule, YoutubeModule],
   exports: [HeaderComponent, FooterComponent, SortComponent],

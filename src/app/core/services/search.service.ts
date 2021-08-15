@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
+import { VideoCard } from 'src/app/youtube/models/response-item';
 import { videoCards } from '../../app.constants';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SearchService {
-  videoCards = videoCards.slice();
+  videoCards: VideoCard[] = [];
 
   getItem() {
+    this.videoCards = videoCards.slice();
     return this.videoCards;
   }
 

@@ -9,7 +9,7 @@ const routes: Routes = [
     component: UserCategoriesComponent,
   },
   {
-    path: 'videos/:id',
+    path: ':id',
     component: DetailPageComponent,
   },
 ];
