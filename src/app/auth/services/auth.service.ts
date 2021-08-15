@@ -11,16 +11,21 @@ export type User = {
 export class AuthService {
   user = {};
 
-  signup(email: string, password: string) {
-    if (!localStorage.getItem('formToken')) {
-      console.log('email', email, password);
-      localStorage.setItem('formToken', this.generateToken());
-      this.user = {
-        id: '1',
-        email,
-      };
-    }
-    console.log('from serv', email, password);
+  loggedIn = false;
+
+  isAuthenticated() {
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(this.loggedIn);
+      }, 500);
+    });
+
+    return promise;
+  }
+
+  logout() {
+    localStorage.removeItem('formToken');
+    this.loggedIn = false;
   }
 
   generateToken() {
@@ -30,9 +35,10 @@ export class AuthService {
     return rand() + rand();
   }
 
-  login(email: string, password: string) {
-    if (localStorage.getItem('formToken')) {
-      console.log('login');
+  login() {
+    if (!localStorage.getItem('formToken')) {
+      localStorage.setItem('formToken', this.generateToken());
+      this.loggedIn = true;
     }
   }
 }

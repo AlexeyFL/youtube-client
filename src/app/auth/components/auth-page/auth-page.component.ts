@@ -23,19 +23,15 @@ export class AuthPageComponent {
     if (!form.valid) {
       return;
     }
-    const { email } = form.value;
-    const { password } = form.value;
+    /* const { email } = form.value;
+    const { password } = form.value; */
 
     this.isLoading = true;
 
-    if (this.isLogin) {
-      console.log(this.isLogin);
-      this.authService.login(email, password);
-    }
-    this.authService.signup(email, password);
+    this.authService.login();
+
     setTimeout(() => {
       this.isLoading = false;
-      this.router.navigate(['/videos']);
     }, 500);
 
     form.reset();

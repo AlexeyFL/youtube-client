@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { VideoCard } from '../../../youtube/models/response-item';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +6,7 @@ import { VideoCard } from '../../../youtube/models/response-item';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  toggleSettings: boolean;
+  togglingSettings: boolean;
 
   searchItems = [];
 
@@ -16,7 +15,7 @@ export class HeaderComponent {
   @Output() passSearchItems = new EventEmitter();
 
   constructor() {
-    this.toggleSettings = false;
+    this.togglingSettings = false;
   }
 
   getSearchItems(arr: []) {
@@ -25,7 +24,6 @@ export class HeaderComponent {
   }
 
   onToggleSettings(item: boolean) {
-    this.toggleSettings = item;
-    this.changeToggleSettings.emit(this.toggleSettings);
+    this.togglingSettings = item;
   }
 }

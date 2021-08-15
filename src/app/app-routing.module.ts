@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundPageComponent } from './core/components/not-found-page/not-found-page.component';
+import { AuthGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,10 +12,11 @@ const routes: Routes = [
     path: 'videos',
     loadChildren: () =>
       import('./youtube/youtube.module').then((m) => m.YoutubeModule),
+    canActivate: [AuthGuard],
   },
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'videos',
     pathMatch: 'full',
   },
   {

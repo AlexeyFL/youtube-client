@@ -6,8 +6,8 @@
     [value]="inputValue"
     [(ngModel)]="inputValue"
   />
-  <span *ngIf="emptyString"> Add some text! </span>
-  <button  class="btn search__btn" (click)="submitSearch(inputValue)">search</button>
+
+  <button  class="btn search__btn" (click)="submitSearch()">search</button>
   <button
 
     (click)="onSettingsButtonClick()"
