@@ -20,8 +20,5 @@ export class DetailPageComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.videoCard = this.searchService.getItemById(params.id);
     });
-    if (this.videoCard) {
-      console.log('detail', this.videoCard);
-    }
   }
 }

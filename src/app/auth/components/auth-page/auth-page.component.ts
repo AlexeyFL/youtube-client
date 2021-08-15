@@ -32,7 +32,7 @@ export class AuthPageComponent {
 
     /* setTimeout(() => {
       this.isLoading = false;
-    }, 500); */
+    }, 800); */
 
     form.reset();
   }

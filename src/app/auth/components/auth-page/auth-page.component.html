@@ -1,8 +1,8 @@
 <div class="auth">
   <div class="container">
-    <!-- <div *ngIf="isLoading">
+    <div *ngIf="isLoading">
       <app-spinner></app-spinner>
-    </div> -->
+    </div>
     <form
       #authForm="ngForm"
       (ngSubmit)="onSubmit(authForm)"
