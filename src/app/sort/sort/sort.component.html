@@ -2,10 +2,10 @@
   <div class="container sort__container">
     <div class="sort__body">
       <span class="sort__title">Sorting by:</span>
-      <button (click)="sortByDate(changeDateAscDesc)" class="btn sort__btn active">
+      <button (click)="sortBy('publishedAt')" class="btn sort__btn active">
         date
       </button>
-      <button (click)="sortByView(changeViewsAscDesc)" class="btn sort__btn">
+      <button (click)="sortBy('viewCount')" class="btn sort__btn">
         count of views
       </button>
       <label for="sort__input" class="sort__btn">by word or sentance</label>

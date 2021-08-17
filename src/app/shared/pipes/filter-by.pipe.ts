@@ -9,18 +9,11 @@ export class FilterByPipe implements PipeTransform {
       return array;
     }
 
-    return array.map((item: any) => {
-      if (searchString) {
-        if (
-          item.snippet.title
-            .toLowerCase()
-            .indexOf(searchString.toLowerCase()) >= 0
-        ) {
-          return item;
-        }
-      }
-
-      return null;
+    return array.filter((item: any) => {
+      return (
+        item.title.toLowerCase().indexOf(searchString!.toLowerCase()) >=
+        0
+      );
     });
   }
 }

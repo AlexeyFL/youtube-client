@@ -1,49 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
-import { SearchItem } from './models/search-item';
+import { ResponseItem, VideoCard } from './models/response-item';
 
-/* export const searchItem: SearchItem = {
-  id: uuidv4(),
-  snippet: {
-    title: 'Angular Tutorial for Beginners: Learn Angular from Scratch | Mosh',
-    publishedAt: '2017-09-05T16:48:15.000Z',
-    thumbnails: {
-      default: {
-        url: 'https://i.ytimg.com/vi/k5E2AVpwsko/default.jpg',
-        width: 120,
-        height: 90,
-      },
-      medium: {
-        url: 'https://i.ytimg.com/vi/k5E2AVpwsko/mqdefault.jpg',
-        width: 320,
-        height: 180,
-      },
-      high: {
-        url: 'https://i.ytimg.com/vi/k5E2AVpwsko/hqdefault.jpg',
-        width: 480,
-        height: 360,
-      },
-      standart: {
-        url: 'https://i.ytimg.com/vi/k5E2AVpwsko/sddefault.jpg',
-        width: 640,
-        height: 480,
-      },
-      maxres: {
-        url: 'https://i.ytimg.com/vi/k5E2AVpwsko/maxresdefault.jpg',
-        width: 1280,
-        height: 720,
-      },
-    },
-  },
-  statistics: {
-    viewCount: '1266085',
-    likeCount: '18342',
-    dislikeCount: '473',
-    favoriteCount: '0',
-    commentCount: '1255',
-  },
-}; */
-
-export const items: SearchItem[] = [
+export const items: ResponseItem[] = [
   {
     id: uuidv4(),
     snippet: {
@@ -374,3 +332,14 @@ export const items: SearchItem[] = [
     },
   },
 ];
+
+export const videoCards: VideoCard[] = items.map((item) => ({
+  title: item.snippet.title,
+  thumbnailUrl: item.snippet.thumbnails.high.url,
+  publishedAt: Date.parse(item.snippet.publishedAt),
+  viewCount: Number(item.statistics.viewCount),
+  likeCount: Number(item.statistics.likeCount),
+  dislikeCount: Number(item.statistics.dislikeCount),
+  favoriteCount: Number(item.statistics.favoriteCount),
+  commentCount: Number(item.statistics.commentCount),
+}));

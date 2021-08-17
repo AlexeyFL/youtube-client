@@ -4,6 +4,7 @@ import { UserCategoriesComponent } from './components/user-categories/user-categ
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { ShortenPipe } from '../shared/pipes/shorten.pipe';
 import { FilterByPipe } from '../shared/pipes/filter-by.pipe';
+import { SortByPipe } from '../shared/pipes/sort-by.pipe';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { FilterByPipe } from '../shared/pipes/filter-by.pipe';
     UserCardComponent,
     ShortenPipe,
     FilterByPipe,
+    SortByPipe,
   ],
   imports: [CommonModule],
   exports: [UserCategoriesComponent],

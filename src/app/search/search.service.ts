@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import { items } from '../app.constants';
+import { videoCards } from '../app.constants';
 
 @Injectable()
 export class SearchService {
-  items = items.slice();
+  videoCards = videoCards.slice();
 
   getItem() {
-    return this.items;
+    return this.videoCards;
   }
 
   filterItem(target: string) {
-    return this.items.filter(
-      (item) =>
-        item.snippet.title.toLowerCase().indexOf(target.toLowerCase()) >= 0,
+    return this.videoCards.filter(
+      (item) => item.title.toLowerCase().indexOf(target.toLowerCase()) >= 0,
     );
   }
 }

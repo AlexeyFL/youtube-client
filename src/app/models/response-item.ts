@@ -4,11 +4,11 @@ type ThumbnailData = {
   height: number;
 };
 
-export interface SearchItem {
+export interface ResponseItem {
   id: string;
   snippet: {
     title: string;
-    publishedAt: any;
+    publishedAt: string;
     thumbnails: {
       default: ThumbnailData;
       medium: ThumbnailData;
@@ -24,4 +24,15 @@ export interface SearchItem {
     favoriteCount: string;
     commentCount: string;
   };
+}
+
+export interface VideoCard {
+  title: string;
+  thumbnailUrl: string;
+  publishedAt: number;
+  viewCount: number;
+  likeCount: number;
+  dislikeCount: number;
+  favoriteCount: number;
+  commentCount: number;
 }

@@ -1,20 +1,22 @@
 <div class="wrapper">
   <app-header
-    (passSearchItems)="getSearchItems($event)"
+    (passSearchItems)="onSearchItemsChange($event)"
     (changeToggleSettings)="onToggleSettings($event)"
-    [categories]="items"
   ></app-header>
   <app-sort
-    (searchString)="getSearchString($event)"
-    *ngIf="toggleSettins"
-    [categories]="searchItems"
-    (sortItems)="(getSortItems($event))"
+    (searchString)="onSearchString($event)"
+    *ngIf="togglingSettings"
+    [categories]="searchingItems"
+    (filteringItems)="searchingItems"
+    (sortingValue)="onSortingValue($event)"
+    (sortOrder)="onSortOrder($event)"
   ></app-sort>
   <div class="container">
-    <!-- <app-search-results></app-search-results> -->
     <app-user-categories
-      [searchString]="searchString"
-      [categories]="searchItems"
+      [searchString]="searchingString"
+      [categories]="searchingItems"
+      [sortingValue]="sortingValue"
+      [sortingOrder]="sortingOrder"
     ></app-user-categories>
   </div>
 </div>

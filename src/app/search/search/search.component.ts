@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SearchItem } from '../../models/search-item';
 import { SearchService } from '../search.service';
 
 @Component({
@@ -15,11 +14,11 @@ export class SearchComponent {
 
   emptyString: boolean;
 
-  @Input() categories: SearchItem[] = [];
+  @Input() categories: [] = [];
 
   @Output() changeToggleSettings = new EventEmitter<boolean>();
 
-  @Output() searchItems = new EventEmitter<SearchItem[]>();
+  @Output() searchItems = new EventEmitter();
 
   constructor(private searchService: SearchService) {
     this.toggleSettings = false;
@@ -27,18 +26,13 @@ export class SearchComponent {
     this.emptyString = false;
   }
 
-  onToggleSettings() {
+  onSettingsButtonClick() {
     this.toggleSettings = !this.toggleSettings;
     this.changeToggleSettings.emit(this.toggleSettings);
   }
 
-  onSearchSubmit() {
-    if (this.inputValue === '') {
-      return;
-    }
-    const items: SearchItem[] = this.searchService.filterItem(this.inputValue);
+  submitSearch() {
+    const items = this.searchService.filterItem(this.inputValue);
     this.searchItems.emit(items);
-
-    this.inputValue = '';
   }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SearchItem } from '../../../models/search-item';
+import { VideoCard } from '../../../models/response-item';
 
 @Component({
   selector: 'app-user-card',
@@ -15,7 +15,7 @@ export class UserCardComponent implements OnInit {
 
   moreHalfYear: boolean;
 
-  @Input() category?: SearchItem;
+  @Input() category?: VideoCard;
 
   constructor() {
     this.lessWeek = false;
@@ -29,24 +29,27 @@ export class UserCardComponent implements OnInit {
     }
   }
 
-  checkDate(arr: SearchItem): void {
-    const dayInMilliseconds = 86400000;
+  checkDate(arr: VideoCard): void {
+    const DAYMILLISECONDS = 86400000;
+    const WEEK = 7;
+    const MONTH = 31;
+    const HALFYEAR = 180;
     const dateNow = new Date();
     const dateNowMilliseconds = Date.parse(dateNow.toISOString());
 
-    const itemDate = Date.parse(arr.snippet.publishedAt);
+    const itemDate = arr.publishedAt;
 
     const difference = Math.round(
-      Math.abs(dateNowMilliseconds - itemDate) / dayInMilliseconds,
+      Math.abs(dateNowMilliseconds - itemDate) / DAYMILLISECONDS,
     );
 
-    if (difference < 7) {
+    if (difference < WEEK) {
       this.lessWeek = true;
     }
-    if (difference > 7 && difference < 31) {
+    if (difference > WEEK && difference < MONTH) {
       this.lessMonth = true;
     }
-    if (difference > 180) {
+    if (difference > HALFYEAR) {
       this.moreHalfYear = true;
     }
 

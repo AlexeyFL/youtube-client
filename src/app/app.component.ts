@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { items } from './app.constants';
-import { SearchItem } from './models/search-item';
 
 @Component({
   selector: 'app-root',
@@ -8,29 +6,35 @@ import { SearchItem } from './models/search-item';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  items = items;
+  searchingItems: [] = [];
 
-  searchItems: SearchItem[] = [];
+  sortingValue: string = '';
 
-  searchString: string | null = null;
+  sortingOrder: boolean = true;
 
-  toggleSettins: boolean = false;
+  searchingString: string | null = null;
+
+  togglingSettings: boolean = false;
 
   title = 'youtube-client';
 
   onToggleSettings(toggle: boolean) {
-    this.toggleSettins = toggle;
+    this.togglingSettings = toggle;
   }
 
-  getSearchItems(searchArr: SearchItem[]) {
-    this.searchItems = searchArr;
+  onSearchItemsChange(searchArr: []) {
+    this.searchingItems = searchArr;
   }
 
-  getSearchString(searchStr: string | null) {
-    this.searchString = searchStr;
+  onSearchString(searchStr: string | null) {
+    this.searchingString = searchStr;
   }
 
-  getSortItems(searchItems: SearchItem[]) {
-    this.searchItems = searchItems;
+  onSortingValue(value: string) {
+    this.sortingValue = value;
+  }
+
+  onSortOrder(value: boolean) {
+    this.sortingOrder = value;
   }
 }
