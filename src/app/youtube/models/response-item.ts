@@ -4,6 +4,11 @@ type ThumbnailData = {
   height: number;
 };
 
+type ItemApiId = {
+  kind: string;
+  videoId: string;
+};
+
 export interface ResponseItem {
   id: string;
   snippet: {
@@ -16,6 +21,37 @@ export interface ResponseItem {
       standart: ThumbnailData;
       maxres: ThumbnailData;
     };
+  };
+  statistics: {
+    viewCount: string;
+    likeCount: string;
+    dislikeCount: string;
+    favoriteCount: string;
+    commentCount: string;
+  };
+}
+export interface ResponseItemApi {
+  etag: string;
+  id: {
+    kind: string;
+    videoId: string;
+  };
+  kind: string;
+  snippet: {
+    channelId: string;
+    channelTitle: string;
+    description: string;
+    liveBroadcastContent: string;
+    publishTime: string;
+    publishedAt: string;
+    thumbnails: {
+      default: ThumbnailData;
+      medium: ThumbnailData;
+      high: ThumbnailData;
+      standart: ThumbnailData;
+      maxres: ThumbnailData;
+    };
+    title: string;
   };
   statistics: {
     viewCount: string;

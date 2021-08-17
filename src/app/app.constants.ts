@@ -1,9 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 import { ResponseItem, VideoCard } from './youtube/models/response-item';
 
-const API_KEY = 'AIzaSyA7rBEC_WjabKhjz3kXyfFro9Q72jBzi0o';
+const API_KEY = 'AIzaSyDdDdXP_SkKa72_9wB63n1xqRyd-DDXIjs';
 
-const API_URL = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&type=video&part=snippet&maxResults=15&q=js`;
+const API_URL = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}`;
+const API_URL_VIDEO = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&type=video&part=snippet&maxResults=10&q=js`;
 
 const items: ResponseItem[] = [
   {
@@ -349,4 +350,4 @@ const videoCards: VideoCard[] = items.map((item) => ({
   commentCount: Number(item.statistics.commentCount),
 }));
 
-export { items, videoCards, API_URL };
+export { items, videoCards, API_URL, API_URL_VIDEO };
