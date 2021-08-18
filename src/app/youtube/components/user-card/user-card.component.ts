@@ -31,7 +31,7 @@ export class UserCardComponent implements OnInit {
   }
 
   checkDate(arr: VideoCard): void {
-    const DAYMILLISECONDS = 86400000;
+    const DAY_MILLISECONDS = 86400000;
     const WEEK = 7;
     const MONTH = 31;
     const HALFYEAR = 180;
@@ -41,7 +41,7 @@ export class UserCardComponent implements OnInit {
     const itemDate = arr.publishedAt;
 
     const difference = Math.round(
-      Math.abs(dateNowMilliseconds - itemDate) / DAYMILLISECONDS,
+      Math.abs(dateNowMilliseconds - itemDate) / DAY_MILLISECONDS,
     );
 
     if (difference < WEEK) {
