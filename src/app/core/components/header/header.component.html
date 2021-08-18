@@ -1,0 +1,14 @@
+<header class="header">
+  <div class="container header__container">
+    <div class="header__wrapper">
+      <div class="logo">
+        <a href="/"> <img src="assets/images/logo.png" alt="Yuotube" /></a>
+      </div>
+      <app-search
+        (changeToggleSettings)="onToggleSettings($event)"
+      ></app-search>
+    </div>
+    <app-user-login *ngIf="authService.loggedIn" class="login"></app-user-login>
+  </div>
+  <app-sort *ngIf="togglingSettings"></app-sort>
+</header>

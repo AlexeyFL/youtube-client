@@ -24,7 +24,8 @@ module.exports = {
       rules: {
         'import/prefer-default-export': 'off',
         'implicit-arrow-linebreak': 'off',
-        'object-curly-newline': 'off'
+        'object-curly-newline': 'off',
+        'class-methods-use-this': 'off'
       },
     },
   ],

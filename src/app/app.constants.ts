@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { ResponseItem, VideoCard } from './models/response-item';
+import { ResponseItem, VideoCard } from './youtube/models/response-item';
 
 export const items: ResponseItem[] = [
   {
@@ -334,6 +334,7 @@ export const items: ResponseItem[] = [
 ];
 
 export const videoCards: VideoCard[] = items.map((item) => ({
+  id: item.id,
   title: item.snippet.title,
   thumbnailUrl: item.snippet.thumbnails.high.url,
   publishedAt: Date.parse(item.snippet.publishedAt),

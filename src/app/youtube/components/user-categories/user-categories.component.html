@@ -1,0 +1,10 @@
+<div class="cards">
+  <app-user-card
+    *ngFor="
+      let category of searchService.videoCards
+        | filterBy: filterService.getFilteringString()
+        | sortBy: filterService.getSortingOptions()
+    "
+    [category]="category"
+  ></app-user-card>
+</div>

@@ -1,0 +1,18 @@
+.footer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  min-height: 30px;
+  background: #e5e5e5;
+  &__link {
+    font-size: 12px;
+    text-decoration: none;
+    color: #000;
+  }
+  &__svg {
+    margin-right: 5px;
+  }
+}
