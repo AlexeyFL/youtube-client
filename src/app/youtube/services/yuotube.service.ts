@@ -6,7 +6,6 @@ import {
   API_FULLCARD_URL,
 } from 'src/app/app.constants';
 import { map } from 'rxjs/operators';
-import { SearchService } from 'src/app/core/services/search.service';
 
 @Injectable({
   providedIn: 'root',
@@ -34,6 +33,11 @@ export class YuotubeService {
         if (this.searchString === '' || this.searchString.length < 3) {
           return [];
         }
+
+        const cardsId: string[] = response.items.map(
+          (item: any) => item.id.videoId,
+        );
+        console.log(cardsId);
         return response.items;
       }),
 

@@ -24,7 +24,7 @@ export class YoutubeStateService {
     this.youtubeService
       .fetchData()
       .pipe(
-        map((items) =>
+        map((items:any) =>
           items.map((item: any) => ({
             id: item.id.videoId,
             title: item.snippet.title,
@@ -35,8 +35,7 @@ export class YoutubeStateService {
             // dislikeCount: Number(item.statistics.dislikeCount),
             // favoriteCount: Number(item.statistics.favoriteCount),
             // commentCount: Number(item.statistics.commentCount),
-          })),
-        ),
+          }))),
       )
       .subscribe((cards: any) => {
         this.cards$$.next(cards);

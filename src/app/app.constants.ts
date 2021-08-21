@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 import { ResponseItem, VideoCard } from './youtube/models/response-item';
 
-const API_KEY = 'AIzaSyCefCpWueCxe362F5sGTmG4P1onhZDsBbM';
+const API_KEY = 'AIzaSyCtqeZxSHtVYsPiN2VMRcpioNMySOWNYlQ';
 
-const API_FULLCARD_URL = `https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}`;
-const API_STATISTICS_URL = `https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}`;
-const API_URL_VIDEO = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&type=video&part=snippet&maxResults=10&q=`;
+const API_FULLCARD_URL = `videos?key=${API_KEY}`;
+const API_STATISTICS_URL = `videos?key=${API_KEY}`;
+const API_URL_VIDEO = `search?key=${API_KEY}&type=video&part=snippet&maxResults=10&q=`;
 
 const items: ResponseItem[] = [
   {
