@@ -9,21 +9,23 @@ import { YuotubeService } from './yuotube.service';
 export class YoutubeStateService {
   cards$: Observable<any>;
 
+  fullCard$: Observable<any>;
+
   private cards$$ = new BehaviorSubject([]);
 
-  private cards = [];
+  private fullCard$$ = new BehaviorSubject([]);
 
   constructor(private youtubeService: YuotubeService) {
     this.cards$ = this.cards$$.asObservable();
+    this.fullCard$ = this.fullCard$$.asObservable();
   }
 
   initData() {
     this.youtubeService
       .fetchData()
       .pipe(
-        map((items) => {
-          console.log(items);
-          return items.map((item: any) => ({
+        map((items) =>
+          items.map((item: any) => ({
             id: item.id.videoId,
             title: item.snippet.title,
             thumbnailUrl: item.snippet.thumbnails.high.url,
@@ -33,18 +35,18 @@ export class YoutubeStateService {
             // dislikeCount: Number(item.statistics.dislikeCount),
             // favoriteCount: Number(item.statistics.favoriteCount),
             // commentCount: Number(item.statistics.commentCount),
-          }));
-        }),
+          })),
+        ),
       )
-      .subscribe(
-        (cards: any) => {
-          this.cards$$.next(cards);
-          this.cards = cards;
-          console.log(cards);
-        },
-        (err) => {
-          console.log(err);
-        },
-      );
+      .subscribe((cards: any) => {
+        this.cards$$.next(cards);
+      });
+
+    this.youtubeService
+      .getFullCard()
+      .pipe(map((items) => items))
+      .subscribe((card: any) => {
+        this.fullCard$$.next(card);
+      });
   }
 }

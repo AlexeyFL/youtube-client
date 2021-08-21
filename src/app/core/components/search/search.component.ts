@@ -20,7 +20,7 @@ import { YuotubeService } from '../../../youtube/services/yuotube.service';
 export class SearchComponent implements AfterViewInit, OnDestroy {
   private inputStream!: Subscription;
 
-  @ViewChild('searchInput', { static: false }) searchingInput?: ElementRef;
+  @ViewChild('searchInput') searchingInput?: ElementRef;
 
   inputValue: string;
 

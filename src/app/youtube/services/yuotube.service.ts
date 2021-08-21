@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API_URL_VIDEO, API_STATISTICS_URL } from 'src/app/app.constants';
+import {
+  API_URL_VIDEO,
+  API_STATISTICS_URL,
+  API_FULLCARD_URL,
+} from 'src/app/app.constants';
 import { map } from 'rxjs/operators';
 import { SearchService } from 'src/app/core/services/search.service';
 
@@ -10,12 +14,18 @@ import { SearchService } from 'src/app/core/services/search.service';
 export class YuotubeService {
   searchString: string = '';
 
-  constructor(private http: HttpClient, private searchService: SearchService) {}
+  fullCardId: string = 'nq4aU9gmZQk';
+
+  constructor(private http: HttpClient) {}
 
   videocards = [];
 
   setSearchString(str: string) {
     this.searchString = str;
+  }
+
+  setFullCardId(id: string) {
+    this.fullCardId = id;
   }
 
   fetchData() {
@@ -38,6 +48,12 @@ export class YuotubeService {
       //   return fullCard;
       // }),
     );
+  }
+
+  getFullCard() {
+    return this.http
+      .get(`${API_FULLCARD_URL}&id=${this.fullCardId}&part=snippet,statistics`)
+      .pipe(map((response: any) => response.items));
   }
 
   getStatistics(id: string) {

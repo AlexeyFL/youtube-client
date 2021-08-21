@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VideoCard } from '../../models/response-item';
+import { YoutubeStateService } from '../../services/youtube-state.service';
+import { YuotubeService } from '../../services/yuotube.service';
 
 @Component({
   selector: 'app-user-card',
@@ -16,9 +18,13 @@ export class UserCardComponent implements OnInit {
 
   moreHalfYear: boolean;
 
-  @Input() category?: VideoCard;
+  @Input() category?: any;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    public youtubeStateService: YoutubeStateService,
+    public youtubeService: YuotubeService,
+  ) {
     this.lessWeek = false;
     this.lessMonth = false;
     this.moreHalfYear = false;
@@ -28,6 +34,13 @@ export class UserCardComponent implements OnInit {
     if (this.category) {
       this.checkDate(this.category);
     }
+  }
+
+  getFullCard(id: string) {
+    console.log(id);
+    this.youtubeService.setFullCardId(id);
+    this.youtubeService.getFullCard();
+    this.youtubeStateService.initData();
   }
 
   checkDate(arr: VideoCard): void {
