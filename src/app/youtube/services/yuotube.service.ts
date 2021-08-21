@@ -1,39 +1,44 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API_URL, API_URL_VIDEO } from 'src/app/app.constants';
+import { API_URL_VIDEO, API_STATISTICS_URL } from 'src/app/app.constants';
 import { map } from 'rxjs/operators';
-// import { forkJoin } from 'rxjs';
+import { SearchService } from 'src/app/core/services/search.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class YuotubeService {
-  constructor(private http: HttpClient) {}
+  searchString: string = '';
+
+  constructor(private http: HttpClient, private searchService: SearchService) {}
 
   videocards = [];
 
-  onFetchData() {
-    this.fetchData();
+  setSearchString(str: string) {
+    this.searchString = str;
   }
 
   fetchData() {
-    return this.http.get(API_URL_VIDEO).pipe(
-      map((response: any) => {
-        const videoItems = Object.values(response)[5];
-        return videoItems;
-      }),
+    console.log('fetchData', this.searchString);
+    return this.http.get(`${API_URL_VIDEO}${this.searchString}`).pipe(
+      map((response: any) => response.items),
+
+      // map((items: any) => {
+      //   const fullCard:any = [];
+      //   items.map((item: any) => {
+      //     this.getStatistics(item.id.videoId).subscribe((data: any) => {
+      //       fullCard.push({ ...item, statistics: data.items[0].statistics });
+      //     });
+      //   });
+
+      //   return fullCard;
+      // }),
     );
   }
 
   getStatistics(id: string) {
-    this.http
-      .get(`${API_URL}&id=${id}&part=statistics`)
-      .pipe(
-        map((response) => {
-          console.log(response);
-          return response;
-        }),
-      )
-      .subscribe((data: any) => data);
+    return this.http
+      .get(`${API_STATISTICS_URL}&id=${id}&part=statistics`)
+      .pipe(map((data) => data));
   }
 }

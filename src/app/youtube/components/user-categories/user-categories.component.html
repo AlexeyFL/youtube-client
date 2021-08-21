@@ -1,14 +1,10 @@
 <div class="cards">
   <app-user-card
     *ngFor="
-      let category of searchService.videoCards
+      let category of youtubeState.cards$ | async
         | filterBy: filterService.getFilteringString()
         | sortBy: filterService.getSortingOptions()
     "
     [category]="category"
   ></app-user-card>
-
-  <div *ngFor="let card of videocards">
-    <!-- {{card | json}} -->
-  </div>
 </div>

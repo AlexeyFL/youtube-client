@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { VideoCard } from 'src/app/youtube/models/response-item';
 import { videoCards } from '../../app.constants';
 
@@ -8,9 +9,21 @@ import { videoCards } from '../../app.constants';
 export class SearchService {
   videoCards: VideoCard[] = [];
 
+  searchString$: Observable<string>;
+
+  private searchString$$ = new BehaviorSubject('');
+
+  constructor() {
+    this.searchString$ = this.searchString$$.asObservable();
+  }
+
   getItem() {
     this.videoCards = videoCards.slice();
     return this.videoCards;
+  }
+
+  getSearchString(searchString: string) {
+    this.searchString$$.next(searchString);
   }
 
   filterItem(target: string) {
