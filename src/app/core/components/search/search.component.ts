@@ -5,11 +5,11 @@ import {
   ViewChild,
   ElementRef,
   AfterViewInit,
+  OnDestroy,
 } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import { tap, map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { YoutubeStateService } from '../../../youtube/services/youtube-state.service';
-import { SearchService } from '../../services/search.service';
 import { YuotubeService } from '../../../youtube/services/yuotube.service';
 
 @Component({
@@ -17,7 +17,9 @@ import { YuotubeService } from '../../../youtube/services/yuotube.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements AfterViewInit {
+export class SearchComponent implements AfterViewInit, OnDestroy {
+  private inputStream!: Subscription;
+
   @ViewChild('searchInput', { static: false }) searchingInput?: ElementRef;
 
   inputValue: string;
@@ -27,7 +29,6 @@ export class SearchComponent implements AfterViewInit {
   @Output() changeToggleSettings = new EventEmitter<boolean>();
 
   constructor(
-    private searchService: SearchService,
     private youtubeState: YoutubeStateService,
     private youtubeService: YuotubeService,
   ) {
@@ -36,10 +37,10 @@ export class SearchComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const inputStream$ = fromEvent(this.searchingInput?.nativeElement, 'keyup')
+    this.inputStream = fromEvent(this.searchingInput?.nativeElement, 'input')
       .pipe(
         map((e: any) => e.target.value),
-        debounceTime(3000),
+        debounceTime(1500),
         distinctUntilChanged(),
         tap((event: any) => {
           this.youtubeService.setSearchString(event);
@@ -49,13 +50,13 @@ export class SearchComponent implements AfterViewInit {
       .subscribe();
   }
 
+  ngOnDestroy() {
+    this.inputStream.unsubscribe();
+  }
+
   onSettingsButtonClick() {
     this.toggleSettings = !this.toggleSettings;
     this.changeToggleSettings.emit(this.toggleSettings);
-  }
-
-  passSearchString(e: Event) {
-    this.searchService.getSearchString((e.target as HTMLInputElement).value);
   }
 
   // submitSearch() {

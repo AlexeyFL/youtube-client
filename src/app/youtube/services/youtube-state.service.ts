@@ -36,10 +36,15 @@ export class YoutubeStateService {
           }));
         }),
       )
-      .subscribe((cards: any) => {
-        this.cards$$.next(cards);
-        this.cards = cards;
-        console.log(cards);
-      });
+      .subscribe(
+        (cards: any) => {
+          this.cards$$.next(cards);
+          this.cards = cards;
+          console.log(cards);
+        },
+        (err) => {
+          console.log(err);
+        },
+      );
   }
 }

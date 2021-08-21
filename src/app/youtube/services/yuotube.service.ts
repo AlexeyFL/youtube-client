@@ -19,9 +19,13 @@ export class YuotubeService {
   }
 
   fetchData() {
-    console.log('fetchData', this.searchString);
     return this.http.get(`${API_URL_VIDEO}${this.searchString}`).pipe(
-      map((response: any) => response.items),
+      map((response: any) => {
+        if (this.searchString === '' || this.searchString.length < 3) {
+          return [];
+        }
+        return response.items;
+      }),
 
       // map((items: any) => {
       //   const fullCard:any = [];

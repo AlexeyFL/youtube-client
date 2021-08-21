@@ -79,7 +79,7 @@
       <div class="icon__text">{{ category.commentCount }}</div>
     </div>
   </div>
-  <h5 class="card__title">{{ category.title | shorten: 20 }}</h5>
+  <h5 class="card__title">{{ category.title | shorten: 15 }}</h5>
   <div class="card__button">
     <a href="#" [routerLink]="['/videos', category.id]" class="btn card__btn"
       >more...</a
