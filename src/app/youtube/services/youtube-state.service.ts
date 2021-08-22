@@ -26,15 +26,15 @@ export class YoutubeStateService {
       .pipe(
         map((items:any) =>
           items.map((item: any) => ({
-            id: item.id.videoId,
+            id: item.id,
             title: item.snippet.title,
             thumbnailUrl: item.snippet.thumbnails.high.url,
             publishedAt: Date.parse(item.snippet.publishedAt),
-            // viewCount: Number(item.statistics.viewCount),
-            // likeCount: Number(item.statistics.likeCount),
-            // dislikeCount: Number(item.statistics.dislikeCount),
-            // favoriteCount: Number(item.statistics.favoriteCount),
-            // commentCount: Number(item.statistics.commentCount),
+            viewCount: Number(item.statistics.viewCount),
+            likeCount: Number(item.statistics.likeCount),
+            dislikeCount: Number(item.statistics.dislikeCount),
+            favoriteCount: Number(item.statistics.favoriteCount),
+            commentCount: Number(item.statistics.commentCount),
           }))),
       )
       .subscribe((cards: any) => {

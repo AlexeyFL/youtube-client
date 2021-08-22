@@ -5,7 +5,7 @@ import {
   API_STATISTICS_URL,
   API_FULLCARD_URL,
 } from 'src/app/app.constants';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -29,28 +29,18 @@ export class YuotubeService {
 
   fetchData() {
     return this.http.get(`${API_URL_VIDEO}${this.searchString}`).pipe(
-      map((response: any) => {
+      map((items: any) => {
         if (this.searchString === '' || this.searchString.length < 3) {
           return [];
         }
-
-        const cardsId: string[] = response.items.map(
-          (item: any) => item.id.videoId,
-        );
-        console.log(cardsId);
-        return response.items;
+        const itemsId = items.items.map((item: any) => item.id.videoId);
+        return itemsId;
       }),
-
-      // map((items: any) => {
-      //   const fullCard:any = [];
-      //   items.map((item: any) => {
-      //     this.getStatistics(item.id.videoId).subscribe((data: any) => {
-      //       fullCard.push({ ...item, statistics: data.items[0].statistics });
-      //     });
-      //   });
-
-      //   return fullCard;
-      // }),
+      switchMap((response: any) =>
+        this.http.get(
+          `${API_FULLCARD_URL}&id=${response.join()}&part=snippet,statistics`,
+        )),
+      map((item: any) => item.items),
     );
   }
 

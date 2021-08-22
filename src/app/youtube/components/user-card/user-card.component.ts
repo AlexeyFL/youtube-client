@@ -37,7 +37,6 @@ export class UserCardComponent implements OnInit {
   }
 
   getFullCard(id: string) {
-    console.log(id);
     this.youtubeService.setFullCardId(id);
     this.youtubeService.getFullCard();
     this.youtubeStateService.initData();

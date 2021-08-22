@@ -1,6 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { YoutubeStateService } from '../../services/youtube-state.service';
 import { YuotubeService } from '../../services/yuotube.service';
@@ -10,7 +9,7 @@ import { YuotubeService } from '../../services/yuotube.service';
   templateUrl: './detail-page.component.html',
   styleUrls: ['./detail-page.component.scss'],
 })
-export class DetailPageComponent implements OnInit, OnDestroy {
+export class DetailPageComponent implements OnInit {
   videoCard?: any;
 
   constructor(
@@ -42,6 +41,4 @@ export class DetailPageComponent implements OnInit, OnDestroy {
         });
     });
   }
-
-  ngOnDestroy() {}
 }

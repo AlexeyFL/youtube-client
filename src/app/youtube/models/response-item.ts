@@ -4,11 +4,6 @@ type ThumbnailData = {
   height: number;
 };
 
-type ItemApiId = {
-  kind: string;
-  videoId: string;
-};
-
 export interface ResponseItem {
   id: string;
   snippet: {
