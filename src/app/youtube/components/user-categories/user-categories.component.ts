@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { SearchService } from 'src/app/core/services/search.service';
 import { FilterService } from 'src/app/core/services/filter.service';
-import { YuotubeService } from '../../services/yuotube.service';
-import { YoutubeStateService } from '../../services/youtube-state.service';
+import { YoutubeService } from '../../services/youtube.service';
+import { VideoCard } from '../../models/response-item';
 
 @Component({
   selector: 'app-user-categories',
@@ -11,16 +11,17 @@ import { YoutubeStateService } from '../../services/youtube-state.service';
   styleUrls: ['./user-categories.component.scss'],
 })
 export class UserCategoriesComponent implements OnInit {
-  videocards: any = [];
+  videocards: VideoCard[] = [];
 
   constructor(
     public searchService: SearchService,
     public filterService: FilterService,
-    public youtubeService: YuotubeService,
-    public youtubeState: YoutubeStateService,
+    public youtubeService: YoutubeService,
   ) {}
 
   ngOnInit() {
-    this.youtubeState.initData();
+    this.youtubeService.cards$.subscribe((data: VideoCard[]) => {
+      this.videocards = data;
+    });
   }
 }
