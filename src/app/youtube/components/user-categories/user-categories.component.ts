@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { SearchService } from 'src/app/core/services/search.service';
 import { FilterService } from 'src/app/core/services/filter.service';
-import { YuotubeService } from '../../services/yuotube.service';
-import { YoutubeStateService } from '../../services/youtube-state.service';
+import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-user-categories',
@@ -16,11 +15,12 @@ export class UserCategoriesComponent implements OnInit {
   constructor(
     public searchService: SearchService,
     public filterService: FilterService,
-    public youtubeService: YuotubeService,
-    public youtubeState: YoutubeStateService,
+    public youtubeService: YoutubeService,
   ) {}
 
   ngOnInit() {
-    this.youtubeState.initData();
+    this.youtubeService.cards$.subscribe((data:any) => {
+      this.videocards = data;
+    });
   }
 }

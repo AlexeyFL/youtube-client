@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VideoCard } from '../../models/response-item';
-import { YoutubeStateService } from '../../services/youtube-state.service';
-import { YuotubeService } from '../../services/yuotube.service';
+import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-user-card',
@@ -22,8 +21,7 @@ export class UserCardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public youtubeStateService: YoutubeStateService,
-    public youtubeService: YuotubeService,
+    public youtubeService: YoutubeService,
   ) {
     this.lessWeek = false;
     this.lessMonth = false;
@@ -36,14 +34,8 @@ export class UserCardComponent implements OnInit {
     }
   }
 
-  getFullCard(id: string) {
-    this.youtubeService.setFullCardId(id);
-    this.youtubeService.getFullCard();
-    this.youtubeStateService.initData();
-  }
-
   checkDate(arr: VideoCard): void {
-    const DAYMILLISECONDS = 86400000;
+    const DAY_MILLISECONDS = 86400000;
     const WEEK = 7;
     const MONTH = 31;
     const HALFYEAR = 180;
@@ -53,7 +45,7 @@ export class UserCardComponent implements OnInit {
     const itemDate = arr.publishedAt;
 
     const difference = Math.round(
-      Math.abs(dateNowMilliseconds - itemDate) / DAYMILLISECONDS,
+      Math.abs(dateNowMilliseconds - itemDate) / DAY_MILLISECONDS,
     );
 
     if (difference < WEEK) {

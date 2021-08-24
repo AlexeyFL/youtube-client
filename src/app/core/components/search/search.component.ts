@@ -8,9 +8,8 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
-import { tap, map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { YoutubeStateService } from '../../../youtube/services/youtube-state.service';
-import { YuotubeService } from '../../../youtube/services/yuotube.service';
+import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { YoutubeService } from '../../../youtube/services/youtube.service';
 
 @Component({
   selector: 'app-search',
@@ -28,26 +27,28 @@ export class SearchComponent implements AfterViewInit, OnDestroy {
 
   @Output() changeToggleSettings = new EventEmitter<boolean>();
 
-  constructor(
-    private youtubeState: YoutubeStateService,
-    private youtubeService: YuotubeService,
-  ) {
+  constructor(private youtubeService: YoutubeService) {
     this.toggleSettings = false;
     this.inputValue = '';
   }
 
   ngAfterViewInit() {
+    this.getSearchString();
+  }
+
+  getSearchString() {
     this.inputStream = fromEvent(this.searchingInput?.nativeElement, 'input')
       .pipe(
         map((e: any) => e.target.value),
         debounceTime(1500),
         distinctUntilChanged(),
-        tap((event: any) => {
-          this.youtubeService.setSearchString(event);
-          this.youtubeState.initData();
-        }),
       )
-      .subscribe();
+      .subscribe((inputValue) => {
+        if (inputValue === '' || inputValue.length < 3) {
+          return;
+        }
+        this.youtubeService.fetchVideoList(inputValue);
+      });
   }
 
   ngOnDestroy() {
@@ -58,11 +59,4 @@ export class SearchComponent implements AfterViewInit, OnDestroy {
     this.toggleSettings = !this.toggleSettings;
     this.changeToggleSettings.emit(this.toggleSettings);
   }
-
-  // submitSearch() {
-  //   this.searchService.getItem();
-  //   this.searchService.videoCards = this.searchService.filterItem(
-  //     this.inputValue,
-  //   );
-  // }
 }

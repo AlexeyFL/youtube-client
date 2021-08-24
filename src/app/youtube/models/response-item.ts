@@ -4,17 +4,41 @@ type ThumbnailData = {
   height: number;
 };
 
+export interface Response {
+  kind: string;
+  etag: string;
+  nextPageToken: string;
+  items: ResponseItemSearch[];
+  pageInfo: {
+    totalResults: number;
+    resultsPerPage: number;
+  };
+  regionCode: string;
+}
+
 export interface ResponseItem {
+  kind: string;
+  etag: string;
   id: string;
   snippet: {
-    title: string;
     publishedAt: string;
+    channelId: string;
+    title: string;
+    description: string;
     thumbnails: {
       default: ThumbnailData;
       medium: ThumbnailData;
       high: ThumbnailData;
       standart: ThumbnailData;
       maxres: ThumbnailData;
+    };
+    channelTitle: string;
+    tags: string[];
+    categoryId: string;
+    liveBroadcastContent: string;
+    localized: {
+      title: string;
+      description: string;
     };
   };
   statistics: {
@@ -25,12 +49,9 @@ export interface ResponseItem {
     commentCount: string;
   };
 }
-export interface ResponseItemApi {
+export interface ResponseItemSearch {
   etag: string;
-  id: {
-    kind: string;
-    videoId: string;
-  };
+  id: string;
   kind: string;
   snippet: {
     channelId: string;

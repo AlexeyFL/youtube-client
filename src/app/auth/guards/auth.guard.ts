@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -16,19 +16,19 @@ import { AuthService } from '../services/auth.service';
 export class AuthGuard implements CanActivate, CanActivateChild {
   authenticated: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.authService.loggedIn$.subscribe((isAuth: boolean) => {
+      this.authenticated = isAuth;
+    });
+  }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): Observable<boolean> | Promise<boolean> | boolean {
-    const sub = this.authService.loggedIn$.subscribe((isAuth: boolean) => {
-      this.authenticated = isAuth;
-    });
     if (this.authenticated) {
       return true;
     }
-    sub.unsubscribe();
     this.router.navigate(['auth']);
     return false;
   }

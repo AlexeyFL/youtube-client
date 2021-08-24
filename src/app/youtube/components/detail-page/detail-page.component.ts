@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { map } from 'rxjs/operators';
-import { YoutubeStateService } from '../../services/youtube-state.service';
-import { YuotubeService } from '../../services/yuotube.service';
+import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-detail-page',
@@ -14,31 +12,15 @@ export class DetailPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    public youtubeStateService: YoutubeStateService,
-    public yuotubeService: YuotubeService,
+    public youtubeService: YoutubeService,
   ) {}
 
   ngOnInit(): void {
-    this.youtubeStateService.initData();
     this.route.params.subscribe((params: Params) => {
-      this.yuotubeService.setFullCardId(params.id);
-      this.youtubeStateService.fullCard$
-        .pipe(
-          map((item: any) => ({
-            id: item[0].id,
-            title: item[0].snippet.title,
-            thumbnailUrl: item[0].snippet.thumbnails.high.url,
-            publishedAt: Date.parse(item[0].snippet.publishedAt),
-            viewCount: Number(item[0].statistics.viewCount),
-            likeCount: Number(item[0].statistics.likeCount),
-            dislikeCount: Number(item[0].statistics.dislikeCount),
-            favoriteCount: Number(item[0].statistics.favoriteCount),
-            commentCount: Number(item[0].statistics.commentCount),
-          })),
-        )
-        .subscribe((data) => {
-          this.videoCard = data;
-        });
+      this.youtubeService.fetchVideoById(params.id);
+      this.youtubeService.fullCard$.subscribe((data) => {
+        this.videoCard = data;
+      });
     });
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { VideoCard } from 'src/app/youtube/models/response-item';
-import { videoCards } from '../../app.constants';
+// import { videoCards } from '../../app.constants';
 
 @Injectable({
   providedIn: 'root',
@@ -15,11 +15,6 @@ export class SearchService {
 
   constructor() {
     this.searchString$ = this.searchString$$.asObservable();
-  }
-
-  getItem() {
-    this.videoCards = videoCards.slice();
-    return this.videoCards;
   }
 
   getSearchString(searchString: string) {

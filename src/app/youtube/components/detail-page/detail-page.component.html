@@ -1,9 +1,9 @@
 <div class="card card__detailed">
   <div class="card__publish">
-    {{ videoCard?.publishedAt | date: 'mediumDate' }}
+    {{ videoCard.publishedAt | date: 'mediumDate' }}
   </div>
   <div class="card__poster">
-    <img src="{{ videoCard?.thumbnailUrl }}" alt="{{ videoCard?.title }}" />
+    <img src="{{ videoCard.thumbnailUrl }}" alt="{{ videoCard.title }}" />
   </div>
   <div class="card__icons">
     <div class="icon icon--viewed">
@@ -21,7 +21,7 @@
           />
         </svg>
       </div>
-      <div class="icon__text">{{ videoCard?.viewCount }}</div>
+      <div class="icon__text">{{ videoCard.viewCount }}</div>
     </div>
 
     <div class="icon icon-liked">
@@ -39,7 +39,7 @@
           />
         </svg>
       </div>
-      <div class="icon__text">{{ videoCard?.likeCount }}</div>
+      <div class="icon__text">{{ videoCard.likeCount }}</div>
     </div>
 
     <div class="icon icon--dislike">
@@ -57,7 +57,7 @@
           />
         </svg>
       </div>
-      <div class="icon__text">{{ videoCard?.dislikeCount }}</div>
+      <div class="icon__text">{{ videoCard.dislikeCount }}</div>
     </div>
 
     <div class="icon icon--comment">
@@ -79,10 +79,10 @@
           />
         </svg>
       </div>
-      <div class="icon__text">{{ videoCard?.commentCount }}</div>
+      <div class="icon__text">{{ videoCard.commentCount }}</div>
     </div>
   </div>
-  <h5 class="card__title">{{ videoCard?.title }}</h5>
+  <h5 class="card__title">{{ videoCard.title }}</h5>
   <div class="card__descripion">
     <p></p>
   </div>
