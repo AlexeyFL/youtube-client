@@ -8,7 +8,12 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
-import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import {
+  map,
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+} from 'rxjs/operators';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
 
 @Component({
@@ -40,13 +45,11 @@ export class SearchComponent implements AfterViewInit, OnDestroy {
     this.inputStream = fromEvent(this.searchingInput?.nativeElement, 'input')
       .pipe(
         map((e: any) => e.target.value),
+        filter((inputValue) => inputValue !== '' && inputValue.length > 2),
         debounceTime(1500),
         distinctUntilChanged(),
       )
       .subscribe((inputValue) => {
-        if (inputValue === '' || inputValue.length < 3) {
-          return;
-        }
         this.youtubeService.fetchVideoList(inputValue);
       });
   }

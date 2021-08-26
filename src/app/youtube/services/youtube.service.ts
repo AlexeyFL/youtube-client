@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  API_FULLCARD_URL,
-  toResponse,
-} from 'src/app/app.constants';
+import { API_FULLCARD_URL, toResponse } from 'src/app/app.constants';
 import { map, switchMap } from 'rxjs/operators';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import {
@@ -45,9 +42,11 @@ export class YoutubeService {
         switchMap((response) =>
           this.http.get<ResponseDetail>(
             `${API_FULLCARD_URL}&id=${response.join()}&part=snippet,statistics`,
-          )),
+          ),
+        ),
         map((item: ResponseDetail) =>
-          item.items.map((card: ResponseItem) => toResponse(card))),
+          item.items.map((card: ResponseItem) => toResponse(card)),
+        ),
       )
       .subscribe((data) => {
         this.cards$$.next(data);
