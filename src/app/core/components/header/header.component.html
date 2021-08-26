@@ -8,7 +8,7 @@
         (changeToggleSettings)="onToggleSettings($event)"
       ></app-search>
     </div>
-    <app-user-login *ngIf="authService.loggedIn" class="login"></app-user-login>
+    <app-user-login *ngIf="authService.loggedIn$ | async" class="login"></app-user-login>
   </div>
   <app-sort *ngIf="togglingSettings"></app-sort>
 </header>

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 export type User = {
   id: string;
@@ -9,21 +10,22 @@ export type User = {
   providedIn: 'root',
 })
 export class AuthService {
-  loggedIn = false;
+  loggedIn$: Observable<boolean>;
 
-  /* isAuthenticated() {
-    const promise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(this.loggedIn);
-      }, 500);
-    });
+  private loggedIn$$ = new BehaviorSubject(false);
 
-    return promise;
-  } */
+  constructor() {
+    this.loggedIn$ = this.loggedIn$$.asObservable();
+  }
+
+  login() {
+    localStorage.setItem('formToken', this.generateToken());
+    this.loggedIn$$.next(true);
+  }
 
   logout() {
     localStorage.removeItem('formToken');
-    this.loggedIn = false;
+    this.loggedIn$$.next(false);
   }
 
   generateToken() {
@@ -31,10 +33,5 @@ export class AuthService {
       return Math.random().toString(36).substr(2);
     }
     return rand() + rand();
-  }
-
-  login() {
-    localStorage.setItem('formToken', this.generateToken());
-    this.loggedIn = true;
   }
 }

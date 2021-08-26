@@ -1,7 +1,7 @@
 <div class="cards">
   <app-user-card
     *ngFor="
-      let category of searchService.videoCards
+      let category of videocards
         | filterBy: filterService.getFilteringString()
         | sortBy: filterService.getSortingOptions()
     "

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { UserCategoriesComponent } from './components/user-categories/user-categories.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
@@ -20,7 +21,7 @@ import { DetailPageComponent } from './components/detail-page/detail-page.compon
     SortByPipe,
     DetailPageComponent,
   ],
-  imports: [CommonModule, YoutubeRoutingModule, RouterModule],
+  imports: [CommonModule, YoutubeRoutingModule, RouterModule, HttpClientModule],
   exports: [UserCategoriesComponent],
 })
 export class YoutubeModule {}
