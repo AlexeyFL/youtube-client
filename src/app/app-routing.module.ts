@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundPageComponent } from './core/components/not-found-page/not-found-page.component';
 import { AuthGuard } from './auth/guards/auth.guard';
+import { AdminPageComponent } from './core/components/admin-page/admin-page.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'videos',
     pathMatch: 'full',
+  },
+  {
+    path: 'admin',
+    component: AdminPageComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: '**',
