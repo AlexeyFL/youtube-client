@@ -2,6 +2,7 @@
   <app-user-card
     *ngFor="
       let category of videocards
+        | async
         | filterBy: filterService.getFilteringString()
         | sortBy: filterService.getSortingOptions()
     "

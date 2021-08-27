@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import * as fromYoutubeReducer from '../redux/reducers/reducer';
 
@@ -14,6 +15,7 @@ import { FilterByPipe } from '../shared/pipes/filter-by.pipe';
 import { SortByPipe } from '../shared/pipes/sort-by.pipe';
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { DetailPageComponent } from './components/detail-page/detail-page.component';
+import { YuotubeEffects } from '../redux/effects/effects';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { DetailPageComponent } from './components/detail-page/detail-page.compon
     YoutubeRoutingModule,
     RouterModule,
     HttpClientModule,
-    StoreModule.forFeature('yuotubeStore', fromYoutubeReducer.mainReducer),
+    StoreModule.forFeature('youtubeState', fromYoutubeReducer.youtubeReducer),
+    EffectsModule.forFeature([YuotubeEffects]),
   ],
   exports: [UserCategoriesComponent],
 })

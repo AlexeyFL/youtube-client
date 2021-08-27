@@ -1,10 +1,17 @@
-import { Card } from './state.models';
+import { VideoCard } from '../youtube/models/response-item';
 
-export interface MainState {
-  cards: Card[];
+export interface AppState {
+  youtubeState: YoutubeState;
 }
 
-export const initialState: MainState = {
+export interface YoutubeState {
+  cards: VideoCard[];
+  loading: boolean;
+  loaded: boolean;
+  error: Error;
+}
+
+export const initialState: YoutubeState = {
   cards: [
     {
       id: 'nq4aU9gmZQk',
@@ -15,6 +22,10 @@ export const initialState: MainState = {
       likeCount: 0,
       dislikeCount: 0,
       commentCount: 0,
+      favoriteCount: 0,
     },
   ],
+  loading: false,
+  loaded: false,
+  error: null,
 };

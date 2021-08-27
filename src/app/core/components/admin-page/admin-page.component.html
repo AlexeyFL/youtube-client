@@ -13,7 +13,7 @@
   <div class="form__row">
     <label for="">Description</label>
     <input
-    [(ngModel)]="descriptionInput"
+      [(ngModel)]="descriptionInput"
       name="description"
       type="text"
       class="form__input"
@@ -21,11 +21,21 @@
   </div>
   <div class="form__row">
     <label for="">Image</label>
-    <input [(ngModel)]="imageInput" name="image" type="text" class="form__input" />
+    <input
+      [(ngModel)]="imageInput"
+      name="image"
+      type="text"
+      class="form__input"
+    />
   </div>
   <div class="form__row">
     <label for="">Link video</label>
-    <input [(ngModel)]="linkVideoInput" name="link-video" type="text" class="form__input" />
+    <input
+      [(ngModel)]="linkVideoInput"
+      name="link-video"
+      type="text"
+      class="form__input"
+    />
   </div>
-  <button (click)="addItem()" class="btn form__btn">Add</button>
+  <button (click)="addItem()" class="btn form__btn" type="button">Add</button>
 </form>
