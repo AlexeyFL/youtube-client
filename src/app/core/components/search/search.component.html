@@ -5,9 +5,9 @@
     placeholder="What are you want to find out?"
     [value]="inputValue"
     [(ngModel)]="inputValue"
+    #searchInput
   />
 
-  <button  class="btn search__btn" (click)="submitSearch()">search</button>
   <button
 
     (click)="onSettingsButtonClick()"

@@ -11,8 +11,6 @@ export class HeaderComponent {
 
   isAuthenticated: boolean;
 
-  searchItems = [];
-
   @Output() changeToggleSettings = new EventEmitter<boolean>();
 
   constructor(public authService: AuthService) {

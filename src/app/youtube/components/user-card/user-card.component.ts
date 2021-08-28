@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VideoCard } from '../../models/response-item';
+import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-user-card',
@@ -16,9 +17,12 @@ export class UserCardComponent implements OnInit {
 
   moreHalfYear: boolean;
 
-  @Input() category?: VideoCard;
+  @Input() category?: any;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    public youtubeService: YoutubeService,
+  ) {
     this.lessWeek = false;
     this.lessMonth = false;
     this.moreHalfYear = false;

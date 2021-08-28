@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { SearchService } from '../../../core/services/search.service';
 import { VideoCard } from '../../models/response-item';
+import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-detail-page',
@@ -9,16 +9,19 @@ import { VideoCard } from '../../models/response-item';
   styleUrls: ['./detail-page.component.scss'],
 })
 export class DetailPageComponent implements OnInit {
-  videoCard?: VideoCard;
+  videoCard: VideoCard | undefined;
 
   constructor(
     private route: ActivatedRoute,
-    private searchService: SearchService,
+    public youtubeService: YoutubeService,
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.videoCard = this.searchService.getItemById(params.id);
+      this.youtubeService.fetchVideoById(params.id);
+      this.youtubeService.fullCard$.subscribe((data: VideoCard | undefined) => {
+        this.videoCard = data;
+      });
     });
   }
 }
