@@ -17,12 +17,6 @@ const reducer = createReducer(
     ...state,
     error,
   })),
-
-  /* on(CardActions.getCustomCard, (state, { card }) => {
-    console.log('state', state.customCards);
-    console.log('action rrrr', card);
-    return { ...state, customCards: state.customCards.push(card) };
-  }), */
 );
 
 export function youtubeReducer(state: YoutubeState, action: Action) {

@@ -27,10 +27,8 @@ export class YuotubeEffects {
         this.yuotubeService.cards$.pipe(
           map((cards) => getCardSuccesful({ cards })),
           catchError((error) => of(getCardFailed({ error }))),
-        ),
-      ),
-    ),
-  );
+        )),
+    ));
 
   getCustomCards: Observable<Action> = createEffect(() =>
     this.actions.pipe(
@@ -39,8 +37,6 @@ export class YuotubeEffects {
         this.yuotubeService.customCards$.pipe(
           map((customCards) => getCustomCardsSuccesful({ customCards })),
           catchError((error) => of(getCustomCardsFailed({ error }))),
-        ),
-      ),
-    ),
-  );
+        )),
+    ));
 }

@@ -55,11 +55,9 @@ export class YoutubeService {
         switchMap((response) =>
           this.http.get<ResponseDetail>(
             `${API_FULLCARD_URL}&id=${response.join()}&part=snippet,statistics`,
-          ),
-        ),
+          )),
         map((item: ResponseDetail) =>
-          item.items.map((card: ResponseItem) => toResponse(card)),
-        ),
+          item.items.map((card: ResponseItem) => toResponse(card))),
       )
       .subscribe((data) => {
         this.cards$$.next(data);

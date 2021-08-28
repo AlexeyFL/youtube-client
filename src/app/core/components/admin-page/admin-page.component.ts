@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-// import { map } from 'rxjs/operators';
 import { getCustomCards } from 'src/app/redux/actions/actions';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
 import { AppState, CustomCard } from '../../../redux/state';
-// import { getCards, createCustomCard } from '../../../redux/actions/actions';
 
 @Component({
   selector: 'app-admin-page',
@@ -22,8 +19,6 @@ export class AdminPageComponent {
 
   linkVideoInput: string;
 
-  customCardsUnsubscribe!: Subscription;
-
   constructor(
     private youtubeService: YoutubeService,
     private router: Router,
@@ -36,11 +31,6 @@ export class AdminPageComponent {
   }
 
   addItem() {
-    /* const title = this.titleInput;
-    const description = this.descriptionInput;
-    const image = this.imageInput;
-    const linkVideo = this.linkVideoInput; */
-
     const newItem: CustomCard = {
       title: this.titleInput,
       description: this.descriptionInput,
@@ -53,22 +43,10 @@ export class AdminPageComponent {
 
     this.store.dispatch(getCustomCards());
 
-    // this.store.dispatch(createCard({...newItem}));
-
-    /* this.customCardsUnsubscribe = this.youtubeService.customCards$
-      .pipe(
-        map((data: any) => {
-          console.log('admin', data);
-          this.store.dispatch(createCustomCard(data));
-        }),
-      )
-      .subscribe(); */
-
     this.titleInput = '';
     this.descriptionInput = '';
     this.imageInput = '';
     this.linkVideoInput = '';
     this.router.navigate(['videos']);
   }
-
 }

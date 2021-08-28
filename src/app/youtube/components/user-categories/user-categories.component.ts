@@ -15,9 +15,9 @@ import { AppState, CustomCard } from '../../../redux/state';
   styleUrls: ['./user-categories.component.scss'],
 })
 export class UserCategoriesComponent implements OnInit {
-  videocards!: Observable<VideoCard[]>;
+  videocards: Observable<VideoCard[]>;
 
-  customCards!: Observable<CustomCard[]>;
+  customCards: Observable<CustomCard[]>;
 
   constructor(
     public searchService: SearchService,
@@ -30,7 +30,6 @@ export class UserCategoriesComponent implements OnInit {
     this.store.dispatch(getCards());
     this.videocards = this.store.select((state) => state.youtubeState.cards);
 
-    // this.store.dispatch(getCards());
     this.customCards = this.store.select(
       (state) => state.youtubeState.customCards,
     );
