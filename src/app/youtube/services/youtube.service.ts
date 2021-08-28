@@ -11,22 +11,35 @@ import {
   VideoCard,
 } from '../models/response-item';
 import { HttpService } from './http.service';
+import { CustomCard } from '../../redux/state';
 
 @Injectable({
   providedIn: 'root',
 })
 export class YoutubeService {
+  private customCards: CustomCard[] = [];
+
   cards$: Observable<VideoCard[]>;
+
+  customCards$: Observable<CustomCard[]>;
 
   fullCard$: Observable<VideoCard | undefined>;
 
   private cards$$ = new BehaviorSubject<VideoCard[]>([]);
 
+  private customCards$$ = new BehaviorSubject<CustomCard[]>([]);
+
   private fullCard$$ = new Subject<VideoCard | undefined>();
 
   constructor(private http: HttpClient, private httpService: HttpService) {
     this.cards$ = this.cards$$.asObservable();
+    this.customCards$ = this.customCards$$.asObservable();
     this.fullCard$ = this.fullCard$$.asObservable();
+  }
+
+  addCustomCard(card: CustomCard) {
+    this.customCards.push(card);
+    this.customCards$$.next(this.customCards.slice());
   }
 
   fetchVideoList(searchQuery: string) {

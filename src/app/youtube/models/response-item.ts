@@ -96,7 +96,4 @@ export interface VideoCard {
   dislikeCount: number;
   favoriteCount: number;
   commentCount: number;
-  description?: string;
-  image?: string;
-  linkVideo?: string;
 }

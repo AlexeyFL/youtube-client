@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { VideoCard } from '../../youtube/models/response-item';
+import { CustomCard } from '../state';
 
 export const getCards = createAction('[CATEGORIES PAGE] GET ALL CARDS');
 
@@ -13,12 +14,14 @@ export const getCardFailed = createAction(
   props<{ error: Error }>(),
 );
 
-export const getFullCard = createAction(
-  '[DETAIL PAGE] GET CARDS',
-  props<{ cardId: number }>(),
+export const getCustomCards = createAction('[ADMIN PAGE] GET ALL CUSTOMCARDS');
+
+export const getCustomCardsSuccesful = createAction(
+  '[CARD EFFECT] SET FETCHED CUSTOMCARDS',
+  props<{ customCards: CustomCard[] }>(),
 );
 
-export const createCard = createAction(
-  '[ADMIN PAGE] GET FULL CARD',
-  props<{ card: VideoCard }>(),
+export const getCustomCardsFailed = createAction(
+  '[CARD EFFECT] FETCHED CUSTOMCARDS FAILED',
+  props<{ error: Error }>(),
 );

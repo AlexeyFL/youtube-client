@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { getCards } from '../../../redux/actions/actions';
 import { YoutubeService } from '../../services/youtube.service';
 import { VideoCard } from '../../models/response-item';
-import { AppState } from '../../../redux/state';
+import { AppState, CustomCard } from '../../../redux/state';
 
 @Component({
   selector: 'app-user-categories',
@@ -17,7 +17,7 @@ import { AppState } from '../../../redux/state';
 export class UserCategoriesComponent implements OnInit {
   videocards!: Observable<VideoCard[]>;
 
-  // videocards: VideoCard[] = [];
+  customCards!: Observable<CustomCard[]>;
 
   constructor(
     public searchService: SearchService,
@@ -29,8 +29,10 @@ export class UserCategoriesComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(getCards());
     this.videocards = this.store.select((state) => state.youtubeState.cards);
-    /* this.youtubeService.cards$.subscribe((data: VideoCard[]) => {
-      this.videocards = data;
-    }); */
+
+    // this.store.dispatch(getCards());
+    this.customCards = this.store.select(
+      (state) => state.youtubeState.customCards,
+    );
   }
 }

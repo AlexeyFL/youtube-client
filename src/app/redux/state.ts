@@ -6,9 +6,18 @@ export interface AppState {
 
 export interface YoutubeState {
   cards: VideoCard[];
+  customCards?: CustomCard[];
   loading: boolean;
   loaded: boolean;
   error: Error;
+}
+
+export interface CustomCard {
+  title: string;
+  description: string;
+  image: string;
+  linkVideo: string;
+  publish: string
 }
 
 export const initialState: YoutubeState = {
@@ -25,6 +34,7 @@ export const initialState: YoutubeState = {
       favoriteCount: 0,
     },
   ],
+  customCards: [],
   loading: false,
   loaded: false,
   error: null,

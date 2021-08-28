@@ -4,7 +4,14 @@ import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap, map } from 'rxjs/operators';
 import { YoutubeService } from '../../youtube/services/youtube.service';
-import { getCards, getCardSuccesful, getCardFailed } from '../actions/actions';
+import {
+  getCards,
+  getCardSuccesful,
+  getCardFailed,
+  getCustomCards,
+  getCustomCardsSuccesful,
+  getCustomCardsFailed,
+} from '../actions/actions';
 
 @Injectable()
 export class YuotubeEffects {
@@ -20,6 +27,18 @@ export class YuotubeEffects {
         this.yuotubeService.cards$.pipe(
           map((cards) => getCardSuccesful({ cards })),
           catchError((error) => of(getCardFailed({ error }))),
+        ),
+      ),
+    ),
+  );
+
+  getCustomCards: Observable<Action> = createEffect(() =>
+    this.actions.pipe(
+      ofType(getCustomCards),
+      switchMap(() =>
+        this.yuotubeService.customCards$.pipe(
+          map((customCards) => getCustomCardsSuccesful({ customCards })),
+          catchError((error) => of(getCustomCardsFailed({ error }))),
         ),
       ),
     ),

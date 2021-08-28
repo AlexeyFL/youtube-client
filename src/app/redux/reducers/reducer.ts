@@ -4,22 +4,25 @@ import { initialState, YoutubeState } from '../state';
 
 const reducer = createReducer(
   initialState,
-  on(CardActions.getCards, (state) => {
-    console.log('state getCards', state);
-    return { ...state, loading: true };
-  }),
-  on(CardActions.getCardSuccesful, (state, { cards }) => {
-    console.log('state getCardSuccesful', state);
-    return { ...state, cards };
-  }),
-  on(CardActions.getCardFailed, (state, { error }) => {
-    console.log('state getCardFailed', state);
-    return { ...state, error };
-  }),
-  on(CardActions.getFullCard, (state) => {
-    console.log('state', state);
-    return { ...state };
-  }),
+  on(CardActions.getCards, (state) => ({ ...state, loading: true })),
+  on(CardActions.getCardSuccesful, (state, { cards }) => ({ ...state, cards })),
+  on(CardActions.getCardFailed, (state, { error }) => ({ ...state, error })),
+
+  on(CardActions.getCustomCards, (state) => ({ ...state, loading: true })),
+  on(CardActions.getCustomCardsSuccesful, (state, { customCards }) => ({
+    ...state,
+    customCards: [...customCards],
+  })),
+  on(CardActions.getCustomCardsFailed, (state, { error }) => ({
+    ...state,
+    error,
+  })),
+
+  /* on(CardActions.getCustomCard, (state, { card }) => {
+    console.log('state', state.customCards);
+    console.log('action rrrr', card);
+    return { ...state, customCards: state.customCards.push(card) };
+  }), */
 );
 
 export function youtubeReducer(state: YoutubeState, action: Action) {

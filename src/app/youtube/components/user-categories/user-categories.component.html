@@ -1,3 +1,14 @@
+<div class="custom-cards">
+  <div class="card" *ngFor="let card of customCards | async">
+    <div class="card__publish">{{ card.publish }}</div>
+    <div class="card__poster">
+      <img src="{{ card.image }}" alt="{{ card.title }}" />
+    </div>
+    <h5 class="card__title">{{ card.title }}</h5>
+    <div class="card__description">{{ card.description }}</div>
+    <div class="card__link">{{ card.linkVideo }}</div>
+  </div>
+</div>
 <div class="cards">
   <app-user-card
     *ngFor="
